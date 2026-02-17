@@ -1,0 +1,397 @@
+
+# 🐼 Pandas Full Notes (Beginner to Intermediate)
+
+## 1️⃣ What is Pandas?
+
+**Pandas** is a Python library used for:
+
+* Data analysis
+* Data cleaning
+* Data manipulation
+* Working with CSV, Excel, JSON files
+
+It works mainly with:
+
+* **Series** (1D data)
+* **DataFrame** (2D table data)
+
+---
+
+## 2️⃣ Installation
+
+```bash
+pip install pandas
+```
+
+Import in Python:
+
+```python
+import pandas as pd
+```
+
+---
+
+# 3️⃣ Pandas Data Structures
+
+## ✅ 1. Series (1D Data)
+
+A Series is like a single column in Excel.
+
+```python
+import pandas as pd
+
+data = [10, 20, 30, 40]
+s = pd.Series(data)
+print(s)
+```
+
+With custom index:
+
+```python
+s = pd.Series(data, index=["a", "b", "c", "d"])
+print(s)
+```
+
+Accessing values:
+
+```python
+print(s["a"])
+print(s[0])
+```
+
+---
+
+## ✅ 2. DataFrame (2D Data)
+
+A DataFrame is like an Excel sheet (rows + columns).
+
+```python
+data = {
+    "Name": ["Anish", "Rahul", "Sneha"],
+    "Age": [21, 22, 20],
+    "Marks": [85, 90, 88]
+}
+
+df = pd.DataFrame(data)
+print(df)
+```
+
+---
+
+# 4️⃣ Reading Data from Files
+
+## 📄 CSV File
+
+```python
+df = pd.read_csv("data.csv")
+```
+
+## 📊 Excel File
+
+```python
+df = pd.read_excel("data.xlsx")
+```
+
+## 🌐 JSON File
+
+```python
+df = pd.read_json("data.json")
+```
+
+---
+
+# 5️⃣ Exploring Data
+
+## View Data
+
+```python
+df.head()      # First 5 rows
+df.tail()      # Last 5 rows
+df.sample(3)   # Random 3 rows
+```
+
+## Information About Data
+
+```python
+df.info()      # Data types and null values
+df.describe()  # Statistical summary
+df.shape       # (rows, columns)
+df.columns     # Column names
+df.dtypes      # Data types
+```
+
+---
+
+# 6️⃣ Selecting Data
+
+## Select Column
+
+```python
+df["Name"]
+df[["Name", "Age"]]
+```
+
+## Select Rows using loc (label based)
+
+```python
+df.loc[0]
+df.loc[0:2]
+```
+
+## Select Rows using iloc (index based)
+
+```python
+df.iloc[0]
+df.iloc[0:2]
+```
+
+---
+
+# 7️⃣ Filtering Data
+
+```python
+df[df["Age"] > 21]
+```
+
+Multiple conditions:
+
+```python
+df[(df["Age"] > 20) & (df["Marks"] > 85)]
+```
+
+---
+
+# 8️⃣ Adding and Modifying Columns
+
+## Add Column
+
+```python
+df["Grade"] = ["A", "A+", "A"]
+```
+
+## Modify Column
+
+```python
+df["Age"] = df["Age"] + 1
+```
+
+---
+
+# 9️⃣ Deleting Data
+
+## Drop Column
+
+```python
+df.drop("Grade", axis=1, inplace=True)
+```
+
+## Drop Row
+
+```python
+df.drop(0, axis=0, inplace=True)
+```
+
+---
+
+# 🔟 Handling Missing Values
+
+## Check Null Values
+
+```python
+df.isnull()
+df.isnull().sum()
+```
+
+## Remove Null Values
+
+```python
+df.dropna()
+```
+
+## Fill Null Values
+
+```python
+df.fillna(0)
+df.fillna(df["Age"].mean())
+```
+
+---
+
+# 1️⃣1️⃣ Sorting Data
+
+```python
+df.sort_values("Marks")               # Ascending
+df.sort_values("Marks", ascending=False)
+```
+
+---
+
+# 1️⃣2️⃣ Rename Columns
+
+```python
+df.rename(columns={"Marks": "Score"}, inplace=True)
+```
+
+---
+
+# 1️⃣3️⃣ Apply Function
+
+```python
+df["Age"] = df["Age"].apply(lambda x: x + 1)
+```
+
+---
+
+# 1️⃣4️⃣ GroupBy (Very Important 🔥)
+
+Used to group data and perform operations.
+
+```python
+df.groupby("Age")["Marks"].mean()
+```
+
+Multiple aggregation:
+
+```python
+df.groupby("Age").agg({
+    "Marks": "mean",
+    "Name": "count"
+})
+```
+
+---
+
+# 1️⃣5️⃣ Merge and Join
+
+## Merge (like SQL join)
+
+```python
+df1 = pd.DataFrame({
+    "ID": [1,2,3],
+    "Name": ["A","B","C"]
+})
+
+df2 = pd.DataFrame({
+    "ID": [1,2,4],
+    "Marks": [90,85,88]
+})
+
+pd.merge(df1, df2, on="ID", how="inner")
+```
+
+Types:
+
+* inner
+* left
+* right
+* outer
+
+---
+
+# 1️⃣6️⃣ Concatenation
+
+```python
+pd.concat([df1, df2])
+```
+
+---
+
+# 1️⃣7️⃣ Value Counts
+
+```python
+df["Age"].value_counts()
+```
+
+---
+
+# 1️⃣8️⃣ Duplicates
+
+```python
+df.duplicated()
+df.drop_duplicates()
+```
+
+---
+
+# 1️⃣9️⃣ String Operations
+
+```python
+df["Name"].str.lower()
+df["Name"].str.upper()
+df["Name"].str.contains("a")
+```
+
+---
+
+# 2️⃣0️⃣ Date and Time Handling
+
+```python
+df["Date"] = pd.to_datetime(df["Date"])
+
+df["Year"] = df["Date"].dt.year
+df["Month"] = df["Date"].dt.month
+```
+
+---
+
+# 2️⃣1️⃣ Export Data
+
+```python
+df.to_csv("output.csv", index=False)
+df.to_excel("output.xlsx", index=False)
+```
+
+---
+
+# 🎯 Real Life Data Analysis Example
+
+```python
+import pandas as pd
+
+df = pd.read_csv("students.csv")
+
+# 1. Check null values
+print(df.isnull().sum())
+
+# 2. Fill missing marks
+df["Marks"].fillna(df["Marks"].mean(), inplace=True)
+
+# 3. Filter students above 80
+top_students = df[df["Marks"] > 80]
+
+# 4. Average marks by class
+print(df.groupby("Class")["Marks"].mean())
+
+# 5. Sort by marks
+print(df.sort_values("Marks", ascending=False))
+```
+
+---
+
+# 🔥 Most Important Topics for Interviews
+
+✔ Series vs DataFrame
+✔ loc vs iloc
+✔ GroupBy
+✔ Merge vs Join
+✔ Handling Missing Values
+✔ Sorting
+✔ Apply function
+✔ Filtering with multiple conditions
+
+---
+
+# 🧠 Summary
+
+Pandas is used for:
+
+* Cleaning messy data
+* Filtering data
+* Grouping data
+* Joining datasets
+* Performing statistical analysis
+* Preparing data for Machine Learning
+
+---
+
+

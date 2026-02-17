@@ -1,0 +1,257 @@
+
+
+## 1️⃣ What is a Variable?
+
+### ✅ Definition:
+
+A **variable** is a name given to a memory location used to store data.
+
+👉 Simple meaning:
+A variable is like a **container** that stores some value.
+
+---
+
+### 🧠 Real Life Example
+
+Think of a water bottle.
+
+* Bottle = Variable
+* Water inside = Value
+* Type of bottle = Data Type
+
+---
+
+### 🖥 Example in C++
+
+```cpp
+int age = 20;
+```
+
+Here:
+
+* `int` → data type
+* `age` → variable name
+* `20` → value stored
+
+---
+
+## 2️⃣ Rules for Naming Variables
+
+✔ Can contain letters, digits, underscore
+✔ Must start with a letter or underscore
+✔ Cannot use keywords (`int`, `return`, etc.)
+✔ Case-sensitive (`age` and `Age` are different)
+
+---
+
+### ✅ Valid Examples
+
+```cpp
+int marks;
+float total_amount;
+int student1;
+```
+
+### ❌ Invalid Examples
+
+```cpp
+int 1age;      // cannot start with number
+int total marks; // space not allowed
+int int;       // keyword not allowed
+```
+
+---
+
+# 3️⃣ What is a Data Type?
+
+### ✅ Definition:
+
+A **data type** tells the compiler what type of data a variable can store.
+
+👉 It defines:
+
+* Type of value
+* Size in memory
+* Range of values
+
+---
+
+# 4️⃣ Basic Data Types in C++
+
+---
+
+## 🔹 1. int (Integer)
+
+Stores whole numbers.
+
+```cpp
+int age = 25;
+int marks = 100;
+```
+
+✔ No decimal values
+✔ Usually 4 bytes
+
+---
+
+## 🔹 2. float
+
+Stores decimal numbers.
+
+```cpp
+float price = 99.5;
+```
+
+✔ Single precision
+✔ 4 bytes
+
+---
+
+## 🔹 3. double
+
+Stores bigger decimal numbers with more precision.
+
+```cpp
+double pi = 3.14159265;
+```
+
+✔ More accurate than float
+✔ 8 bytes
+
+---
+
+## 🔹 4. char
+
+Stores a single character.
+
+```cpp
+char grade = 'A';
+```
+
+✔ Written inside single quotes
+✔ Stores only one character
+
+---
+
+## 🔹 5. bool
+
+Stores true or false.
+
+```cpp
+bool isPassed = true;
+```
+
+✔ Only two values: true / false
+
+---
+
+# 5️⃣ Declaration vs Initialization
+
+### 🔹 Declaration
+
+```cpp
+int age;
+```
+
+Variable created but no value assigned.
+
+---
+
+### 🔹 Initialization
+
+```cpp
+int age = 20;
+```
+
+Variable created and value assigned.
+
+---
+
+# 6️⃣ Multiple Variable Declaration
+
+```cpp
+int a = 10, b = 20, c = 30;
+```
+
+---
+
+# 7️⃣ Printing Variables
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int age = 21;
+    cout << age;
+    return 0;
+}
+```
+
+---
+
+# 8️⃣ Memory Concept (Important for Understanding)
+
+When we write:
+
+```cpp
+int age = 25;
+```
+
+👉 Computer:
+
+* Reserves memory
+* Stores 25 inside it
+* Links that memory to name "age"
+
+You can explain:
+
+> Variable is just a name. Actual value is stored in RAM.
+
+---
+
+# 9️⃣ Example Program for Students
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int age = 20;
+    float height = 5.8;
+    char grade = 'A';
+    bool isStudent = true;
+
+    cout << "Age: " << age << endl;
+    cout << "Height: " << height << endl;
+    cout << "Grade: " << grade << endl;
+    cout << "Student Status: " << isStudent << endl;
+
+    return 0;
+}
+```
+
+---
+
+# 🔟 Common Mistakes Beginners Make
+
+❌ Forgetting semicolon
+❌ Using double quotes for char
+❌ Using float instead of int
+❌ Not initializing variables
+❌ Confusing float and double
+
+---
+
+# 🎯 Short Summary (For End of Video)
+
+✔ Variable = container
+✔ Data type = type of data stored
+✔ C++ is strongly typed
+✔ Must declare before using
+✔ Data types decide memory size
+
+---
+
+
